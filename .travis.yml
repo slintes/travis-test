@@ -21,3 +21,5 @@ deploy:
   - file2.txt
   on:
     repo: slintes/travis-test
+    all_branches: true
+    condition: true
