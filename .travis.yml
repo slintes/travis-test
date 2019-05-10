@@ -7,13 +7,14 @@ install:
 - git reset --hard
 script:
 - export MY_VAR=${TRAVIS_TAG:-my-var}
-- touch file-${MY_VAR}.txt
-- touch file1.txt
-- touch file2.txt
+- echo "hello world" > file-${MY_VAR}.txt
+- echo "hello world 1" > file1.txt
+- echo "hello world 2" > file2.txt
 deploy:
   provider: releases
   api_key:
     secure: ZtCzMqPIBI10G5c2SP876QfRhIiDaFZcWONeWYGM7syZq6mK0lOeG7e+KaV1pIFsD3kQqaWKT9xGdG/IEYWJHU2IDAsCgSBiyLWHYveJSEQmdhr/n+CIUvhKECBfBs0W6HNB7mHCa1rrDUCTckisw28Kywx8FxrK0h/nFEslvB0YwyLLF0lRgiAsZqq3Xh2k+nJgaIwHNaG/MiISxF8gZPNRFeQ4AVPKwVHkUytOF8rPJrCS9MeP7lNJWb7HMRZbps7btSVrPG/aHSeJKHMf+I6bhR+LTsfeirys089EP56DW0vJ7KWbp9ATDogRZph1IsjciaB1TJzgGPawx589TSqPvzw9n+rynBNH0Qe+p5//8bGrTiJPGMVfeygJok8ibugmkBqlO5An50rwCwjix37IcFWQqH0bwKRQePP3fmDzs8E8R4OA74DHzr0mo9iBsSD3S3DWWbe8P/rppEmpPl97qSI+bFdqfz38WtzNLl9puPAY7mYDuxxStECsTfb0nmsZZUwhuyy4fNh0sg8m99pmx5gc5YfXuVQdnZ3f4oKM2+OLO5fmks0DdB58pgatNDMOQwSoEQRYTae7kxgzoIxQD24AYH1aI6zAdyznv5YmdgVlRTQtGOpUtlANNFi99RwSLPFONCIiIBn4JB3R8xN+ICzr6uTCcg8DMeMYWdU=
+  skip_cleanup: true
   file_glob: true
   file:
   - file1.txt
@@ -21,3 +22,5 @@ deploy:
   - file2.txt
   on:
     repo: slintes/travis-test
+    all_branches: true
+    condition: true
